@@ -2,11 +2,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-1);
 }
 
+
 body{
-  background-color: #fff;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(155deg, rgba(174,68,90,1) 0%, rgba(101,67,111,1) 20%, rgba(87,67,115,1) 100%);
+  background-size: 150% 150%;
+  animation: GradientAnimation 20s ease infinite;
+}
+
+@keyframes GradientAnimation {
+  0%{background-position: 0% 38%}
+  50%{background-position: 100% 62%}
+  100%{background-position:0% 38%}
 }
 
 /* -------------------------------------- VARIAVEIS DE CSS -------------------------------------- */
@@ -14,4 +25,6 @@ body{
   --bg: #ffffff;
   --grey: gray;
   --border_radius: 20px;
+  --font-1: gt, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-2: acorn, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
