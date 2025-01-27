@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-geist-sans);
+}
+
+body{
+  background-color: #fff;
+}
+
+/* -------------------------------------- VARIAVEIS DE CSS -------------------------------------- */
+:root {
+  --bg: #ffffff;
+  --grey: gray;
+  --border_radius: 20px;
+}

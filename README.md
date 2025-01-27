@@ -69,3 +69,17 @@ Under Source, select the gh-pages branch.
 Save the settings.
 
 https://leandrohee.github.io/portfolio/
+
+# TSPARTICLES
+
+I use this framework to make the background 
+
+https://particles.js.org/
+
+Install the dependencies
+
+```bash
+yarn add @tsparticles/react @tsparticles/engine
+```
+
+Set up the project exactly like the folder "Content", "ParticlesBg" and "App"
