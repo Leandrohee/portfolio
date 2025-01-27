@@ -68,4 +68,4 @@ Navigate to Settings > Pages.
 Under Source, select the gh-pages branch.
 Save the settings.
 
-https://leandrohee.github.io/confere-nf-react/
+https://leandrohee.github.io/portfolio/
