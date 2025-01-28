@@ -7,8 +7,8 @@ const NavbarSc = styled.nav`
     display: flex;
     width: 40%;
     height: 5vh;
-    /* background-color: transparent; */
-    background-color: red;
+    background-color: transparent;
+    /* background-color: red; */
     margin: auto;
     margin-top: 2.5vh;
     border-radius: 25px;

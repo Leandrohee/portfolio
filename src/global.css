@@ -1,14 +1,52 @@
+/* --------------------------------------- IMPORTING FONTS -------------------------------------- */
+/* Minimalist and Modern Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Elegant and Serif Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap');
+
+/* Playful and Creative Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Monospace Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;700&display=swap');
+
+
+
+/* --------------------------------------- GLOBAL SETTINGS -------------------------------------- */
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-1);
-}
+  font-family: var(--font-min1);
+  font-weight: 200;
+  font-size: 16px;
+  /* font-family: var(--font-mon4); */
 
+  /*overflow hidden is to prevent margin to collapse, can use padding: 0.1px as well*/                                                                                                                                 
+  /* overflow: hidden; */
+  padding: 0.1px;
+}
 
 body{
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(155deg, rgba(174,68,90,1) 0%, rgba(101,67,111,1) 20%, rgba(87,67,115,1) 100%);
   background-size: 150% 150%;
   animation: GradientAnimation 20s ease infinite;
@@ -25,6 +63,32 @@ body{
   --bg: #ffffff;
   --grey: gray;
   --border_radius: 20px;
-  --font-1: gt, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --font-2: acorn, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  /* Minimalist Fonts */
+  --font-min1: 'Poppins', sans-serif;                   /*Bests to mimalist styles - use with font 200 - 16px*/
+  --font-min2: 'Roboto', sans-serif;                    /*Bests to mimalist styles - use with font 200 - 16px*/
+  --font-min3: 'Lato', sans-serif;
+  --font-min4: 'Montserrat', sans-serif;        
+  --font-min5: 'Open Sans', sans-serif;
+  --font-min6: 'Inter', sans-serif;
+
+  /* Elegant Fonts */
+  --font-ele1: 'Playfair Display', serif;
+  --font-ele2: 'Merriweather', serif;
+  --font-ele3: 'Libre Baskerville', serif;
+  --font-ele4: 'Cormorant Garamond', serif;
+  --font-ele5: 'EB Garamond', serif;
+
+  /* Playful Fonts */
+  --font-pla1: 'Pacifico', cursive;
+  --font-pla2: 'Amatic SC', cursive;
+  --font-pla3: 'Dancing Script', cursive;             /*Best to fun logos*/
+  --font-pla4: 'Lobster', cursive;
+  --font-pla5: 'Bebas Neue', sans-serif;
+
+  /* Monospace Fonts */
+  --font-mon1: 'Fira Code', monospace;
+  --font-mon2: 'JetBrains Mono', monospace;
+  --font-mon3: 'Source Code Pro', monospace;
+  --font-mon4: 'Inconsolata', monospace;            /*Best for old texts like type machine - use 200 and 18px */
 }
