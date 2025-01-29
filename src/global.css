@@ -45,7 +45,7 @@
 }
 
 body{
-  height: 100vh;
+  height: 950vh;
   width: 100%;
   background: linear-gradient(155deg, rgba(174,68,90,1) 0%, rgba(101,67,111,1) 20%, rgba(87,67,115,1) 100%);
   background-size: 150% 150%;

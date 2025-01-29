@@ -6,13 +6,6 @@ import About from "../Pages/About";
 import Skills from "../Pages/Skills";
 import Contact from "../Pages/Contact";
 import Navbar from "../components/Navbar";
-import styled from "styled-components";
-
-const RotasSc = styled.div`
-  height: 100%;
-  width: 100%;
-`
-
 
 export default function Rotas() {
   return (

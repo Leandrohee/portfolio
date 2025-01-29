@@ -4,14 +4,15 @@ import Links from "../Links"
 
 
 const NavbarSc = styled.nav`
+    position: fixed;                          //config related to fixed - margin doesnt work with fixed
+    left: 50vw;                               //config related to fixed
+    translate: -50% 50%;                      //config related to fixed (x,y)
+    width: 50vw;                              //config related to size of the navbar
+    height: 6vh;                             //config related to size of the navbar
+    border-radius: 25px;                      //config related to size of the navbar
     display: flex;
-    width: 40%;
-    height: 5vh;
     background-color: transparent;
     /* background-color: red; */
-    margin: auto;
-    margin-top: 2.5vh;
-    border-radius: 25px;
 `
 
 export default function Navbar() {

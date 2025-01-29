@@ -1,38 +1,37 @@
 import { Link, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import {motion}  from "framer-motion"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 const LinksSc = styled.div`
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 2%;
     align-items: center;
-    padding: 0 2vw;
-
+    
     .link{
         text-decoration: none;
         color: white;
         font-weight: 300;
-    }
-
-
-    .divBg{
         min-width: 100px;
         padding: 8px;
         border-radius: 30px;
         text-align: center;
     }
-
-    .divBg.isSelected{
-        background-color: #c0bbbb2a;
-    }
-
-
 `
 
+const BgLinkSc = styled(motion.div)`
+    position: fixed;                        //Fixed is related to the body, while absolute is related to the parent
+    width: 100px;
+    height: 40px;
+    background-color: #c0bbbb2a;
+    /* background-color: red; */
+    border-radius: 30px;
+    z-index: -1;                            //Make it lower then the other
+`
 
 /* ------------------------------------------ COMPONENT ----------------------------------------- */
 export default function Links() {
@@ -55,24 +54,67 @@ export default function Links() {
             },
         ]
         const location = useLocation()
-        const [moveWhere, setMoveWhere] = useState()
-  
+        const [position, setPosition] = useState({left: 0, width: 0})
+        const linksRef = useRef<(HTMLAnchorElement | null)[]>([])
+
+        
+        //Getting the first position of the BgLink based on the current page
+        useEffect(()=>{
+            const currentLink = getCurrentLink()
+            if(currentLink){
+                const firstLink = {
+                    left: currentLink.offsetLeft,                                               //Getting the position related to the parent <LinkSc
+                    top: currentLink.offsetTop,                                                 //Getting the position related to the parent <LinkSc
+                    width: currentLink?.getBoundingClientRect().width                           //Getting the information of the element related to the body
+                }
+                setPosition({left: firstLink.left, width: firstLink.width})
+            }
+        },[]);
+
+        //Geting the current link of the page to assemble the bgLink
+        function getCurrentLink (){
+            let currentLink = linksRef.current.find(link => 
+                link?.innerHTML.toLowerCase() == location.pathname.replace("/","")
+            )
+            if (location.pathname == "/") currentLink = linksRef.current[0]
+
+            return currentLink
+        }
+
+
+        //Changing the position of the BgLinkSc
+        function handleClick(event: React.MouseEvent<HTMLAnchorElement>){
+            setPosition({
+                left: event.currentTarget.offsetLeft,
+                width: event.currentTarget?.getBoundingClientRect().width                           //Getting the information of the element related to the body
+            })
+        }
+
 
 
     return (
     <LinksSc >
-        {links.map(link => (
-            <motion.div
-               className={`divBg ${location.pathname == link.link && 'isSelected'}`}
-            >
+        { position.left !== 0 &&                                                                        //Only render with the position is defined
+            <BgLinkSc
+                layout
+                initial={{ left: position.left}}                                                        //Initial position                                                      
+                animate={{ left: position.left}}                                                        //Ensures animation updates
+                transition={{
+                    duration: 0.2,
+                    delay: 0.0,                                                                         //Time to start the transition
+                }}      
+            />
+        }
+        {links.map((link, index) => (
                 <Link 
-                    key={link.link}
+                    key={index}
                     className="link"
                     to={link.link}
+                    onClick={handleClick}
+                    ref={(element)=> (linksRef.current[index] = element)}                           //Getting the html of every Link
                 >
                         {link.name}
                 </Link>
-            </motion.div>
         ))}
     </LinksSc>
   )

@@ -5,6 +5,7 @@ const WorkSc = styled.div`
   display: flex;
   flex-direction: column;
   color: white; 
+  margin-top: 50px;
   padding: 50px;
 `
 
