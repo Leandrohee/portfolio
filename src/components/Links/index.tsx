@@ -28,7 +28,6 @@ const BgLinkSc = styled(motion.div)`
     width: 100px;
     height: 40px;
     background-color: #c0bbbb2a;
-    /* background-color: red; */
     border-radius: 30px;
     z-index: -1;                            //Make it lower then the other
 `
@@ -54,33 +53,38 @@ export default function Links() {
             },
         ]
         const location = useLocation()
-        const [position, setPosition] = useState({left: 0, width: 0})
+        const [position, setPosition] = useState({left: 0, width: 0})                           //Position of the Link background 
         const linksRef = useRef<(HTMLAnchorElement | null)[]>([])
 
-        
-        //Getting the first position of the BgLink based on the current page
-        useEffect(()=>{
+        //Getting the position of current BgLink based on the current page
+        useEffect(() => {
+            changePosition()
+            window.addEventListener("resize", changePosition);                                          //Adding the event listener to change the position of the BgLink every time it resize the page
+            return () => window.removeEventListener("resize", changePosition);                          //Removing the event listener so it dont have to many event listeners
+        }, [location.pathname]);                                                                        //Only trigger the useEffect when the page is mounted or when the url changes
+                    
+
+        //Function only used in the useEffects to change the  position of the BgLink
+        function changePosition(){
             const currentLink = getCurrentLink()
             if(currentLink){
                 const firstLink = {
-                    left: currentLink.offsetLeft,                                               //Getting the position related to the parent <LinkSc
-                    top: currentLink.offsetTop,                                                 //Getting the position related to the parent <LinkSc
+                    left: currentLink.offsetLeft,                                               //Getting the position related to the parent <LinkSc/>
+                    top: currentLink.offsetTop,                                                 //Getting the position related to the parent <LinkSc/>
                     width: currentLink?.getBoundingClientRect().width                           //Getting the information of the element related to the body
                 }
-                setPosition({left: firstLink.left, width: firstLink.width})
+                setPosition({left: firstLink.left, width: firstLink.width})                     
             }
-        },[]);
+        }
 
-        //Geting the current link of the page to assemble the bgLink
+        //Function used by the useEffect for discover the current link (string)
         function getCurrentLink (){
             let currentLink = linksRef.current.find(link => 
                 link?.innerHTML.toLowerCase() == location.pathname.replace("/","")
             )
             if (location.pathname == "/") currentLink = linksRef.current[0]
-
             return currentLink
         }
-
 
         //Changing the position of the BgLinkSc
         function handleClick(event: React.MouseEvent<HTMLAnchorElement>){
@@ -89,8 +93,6 @@ export default function Links() {
                 width: event.currentTarget?.getBoundingClientRect().width                           //Getting the information of the element related to the body
             })
         }
-
-
 
     return (
     <LinksSc >
@@ -111,7 +113,7 @@ export default function Links() {
                     className="link"
                     to={link.link}
                     onClick={handleClick}
-                    ref={(element)=> (linksRef.current[index] = element)}                           //Getting the html of every Link
+                    ref={(element)=> (linksRef.current[index] = element)}                               //Getting the html of every Link
                 >
                         {link.name}
                 </Link>
@@ -119,3 +121,17 @@ export default function Links() {
     </LinksSc>
   )
 }
+
+
+/* ----------------------------------------- INFORMATION ---------------------------------------- */
+/*
+    This page is rather complex, it involves:
+        useLocation, 
+        framer-motion (animation, transition, initial),
+        useRef to reference HTML elements
+        location of the HTML elements relation to parents (offsetLeft, offsetTop)
+        location of the HTML elements relation to Body (getBoundingClientRect)
+        eventListeners to monitor the size of the screen
+
+
+*/
