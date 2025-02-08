@@ -27,7 +27,6 @@ const BgLinkSc = styled(motion.div)`
     position: fixed;                        //Fixed is related to the body, while absolute is related to the parent
     width: 100px;
     height: 40px;
-    /* background-color: #ffffff50; */
     background-color: #a5cdea;
     border-radius: 30px;
     z-index: -1;                            //Make it lower then the other
@@ -74,6 +73,7 @@ export default function Links() {
                     top: currentLink.offsetTop,                                                 //Getting the position related to the parent <LinkSc/>
                     width: currentLink?.getBoundingClientRect().width                           //Getting the information of the element related to the body
                 }
+                console.log(firstLink)
                 setPosition({left: firstLink.left, width: firstLink.width})                     
             }
         }
@@ -95,12 +95,12 @@ export default function Links() {
             })
         }
 
+
     return (
     <LinksSc >
         { position.left !== 0 &&                                                                        //Only render with the position is defined
             <BgLinkSc
-                layout
-                initial={{ left: position.left}}                                                        //Initial position                                                      
+                initial={{ left: position.left}}                                                //Initial position                                                      
                 animate={{ left: position.left}}                                                        //Ensures animation updates
                 transition={{
                     duration: 0.2,
