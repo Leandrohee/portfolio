@@ -45,17 +45,18 @@
 }
 
 body{
-  height: 950vh;
+  height: 200vh;
   width: 100%;
-  background: linear-gradient(155deg, rgba(174,68,90,1) 0%, rgba(101,67,111,1) 20%, rgba(87,67,115,1) 100%);
+  background-color: linear-gradient(to left top, #3674B5, #578FCA, #A1E3F9 );
+  background-image: linear-gradient(to left top, #3674B5, #578FCA, #A1E3F9 );
   background-size: 150% 150%;
-  animation: GradientAnimation 20s ease infinite;
+  animation: bg 10s ease infinite;
 }
 
-@keyframes GradientAnimation {
-  0%{background-position: 0% 38%}
-  50%{background-position: 100% 62%}
-  100%{background-position:0% 38%}
+@keyframes bg {
+  0%{background-position: 0% 50%}
+  50%{background-position: 100% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* -------------------------------------- VARIAVEIS DE CSS -------------------------------------- */

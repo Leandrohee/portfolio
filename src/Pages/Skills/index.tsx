@@ -6,7 +6,7 @@ const SkillsSc = styled.div`
   flex-direction: column;
   width: 50vw;
   height: 50vh;
-  background-color: blue;
+  /* background-color: blue; */
 `
 
 /* ----------------------------------------- COMPONENTS ----------------------------------------- */

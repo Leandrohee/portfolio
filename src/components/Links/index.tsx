@@ -14,7 +14,7 @@ const LinksSc = styled.div`
     
     .link{
         text-decoration: none;
-        color: white;
+        color: black;
         font-weight: 300;
         min-width: 100px;
         padding: 8px;
@@ -27,7 +27,8 @@ const BgLinkSc = styled(motion.div)`
     position: fixed;                        //Fixed is related to the body, while absolute is related to the parent
     width: 100px;
     height: 40px;
-    background-color: #c0bbbb2a;
+    /* background-color: #ffffff50; */
+    background-color: #a5cdea;
     border-radius: 30px;
     z-index: -1;                            //Make it lower then the other
 `

@@ -4,7 +4,7 @@ import styled from "styled-components"
 const WorkSc = styled.div`
   display: flex;
   flex-direction: column;
-  color: white; 
+  color: #000000; 
   margin-top: 50px;
   padding: 50px;
 `

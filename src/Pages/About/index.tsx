@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 const AboutSc = styled.div`
-    background-color: green;
+    /* background-color: green; */
     height: 50vh;
     width: 50vw;
 `

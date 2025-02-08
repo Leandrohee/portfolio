@@ -6,7 +6,7 @@ const ContactSc = styled.div`
     flex-direction: column;
     width: 50vw;
     height: 50vh;
-    background-color: pink;
+    /* background-color: pink; */
 `
 
 /* ------------------------------------------ COMPONENT ----------------------------------------- */
