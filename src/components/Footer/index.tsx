@@ -66,11 +66,14 @@ export const FooterSc = styled.footer`
     }
 `
 
+/* ------------------------------------- LINKS IN THE FOOTER ------------------------------------ */
 const githubLink = "https://github.com/Leandrohee"
 const linkedinLink = "https://www.linkedin.com/in/leandro-h-torres/"
 const cvLink = "https://drive.google.com/file/d/1vn7Ey99ql1eClP7xkpVV9zvAuyp4Uill/view?usp=sharing"
+const contactLink = "/contact"
 
 
+/* ------------------------------------------ COMPONENT ----------------------------------------- */
 export default function Footer() {
   return (
     <FooterSc>
@@ -87,7 +90,7 @@ export default function Footer() {
                 </div>
                 <div className="footerContact">
                     <p>Contact</p>
-                    <p><Link to="/contact" >Contact</Link></p>
+                    <p><Link to={contactLink} >Contact</Link></p>
                 </div>
             </div>
         </div>
