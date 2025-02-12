@@ -6,10 +6,10 @@ import About from "../Pages/About";
 import Skills from "../Pages/Skills";
 import Contact from "../Pages/Contact";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Rotas() {
   return (
-
     <Router basename="/portfolio">
         <Navbar/>                                                   {/*Navbar is paralel to all the routes*/}
         <Routes>
@@ -18,6 +18,7 @@ export default function Rotas() {
             <Route path="/skills" element={<Skills/>}/>
             <Route path="/contact" element={<Contact/>}/>
         </Routes>
+        <Footer/>
     </Router>
   )
 }

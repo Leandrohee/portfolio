@@ -39,6 +39,7 @@ const WorkSc = styled.div`
     justify-content: space-between;
     height: auto;
     width: 100%;
+    padding: 0 50px;
   }
 `
 const WorkBoxSc = styled(motion.div)<WorkBoxScProps>`

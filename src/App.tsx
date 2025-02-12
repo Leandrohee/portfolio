@@ -3,14 +3,16 @@ import Rotas from "./Routes";
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 const AppSc = styled.div`
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   width: 100%;
 `
 
 /* --------------------------------------- MAIN COMPONENT --------------------------------------- */
 function App() {
   return (
-    <AppSc>
+    <AppSc id="app">
       <Rotas/>
     </AppSc>
 

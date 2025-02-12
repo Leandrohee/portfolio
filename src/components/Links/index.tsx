@@ -73,7 +73,6 @@ export default function Links() {
                     top: currentLink.offsetTop,                                                 //Getting the position related to the parent <LinkSc/>
                     width: currentLink?.getBoundingClientRect().width                           //Getting the information of the element related to the body
                 }
-                console.log(firstLink)
                 setPosition({left: firstLink.left, width: firstLink.width})                     
             }
         }
