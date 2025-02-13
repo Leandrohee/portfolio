@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import sun from "../../assets/sunWhite.png"
+
+
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 export const FooterSc = styled.footer`
@@ -54,16 +57,34 @@ export const FooterSc = styled.footer`
                 text-decoration: none;
                 color: black;
             }
-
         }
     }
 
     .themePicker{
-        /* background-color: #0dc04f; */
+        background-color: #0dc04f4a;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         height: 40%;
         width: 100%;
         padding: 10px;
     }
+`
+
+const Stick = styled.div`
+    width: 2px;
+    height: 30px;
+    background-color: #000;
+    /* margin: 0 25px; */
+    /* transform: scaley(2); */
+`
+
+const Sun = styled.img`
+    position: absolute;
+    background-color: #0A2E36;
+    padding: 11px;
+    height: 45px;
+    border-radius: 50%;
 `
 
 /* ------------------------------------- LINKS IN THE FOOTER ------------------------------------ */
@@ -75,6 +96,9 @@ const contactLink = "/contact"
 
 /* ------------------------------------------ COMPONENT ----------------------------------------- */
 export default function Footer() {
+
+    const arr = Array.from({ length: 24 }, (_, index) => index);
+
   return (
     <FooterSc>
         <div className="informations">
@@ -94,8 +118,18 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-        <div className="themePicker">
-        </div>
+        <div className="themePicker"> 
+            <Sun
+                src={sun}
+            />
+
+
+            {arr.map(item => (
+                <Stick 
+                    key={item}
+                />
+            ))}
+        </div>  
     </FooterSc>
   )
 }
