@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import sun from "../../assets/sunWhite.png"
-
+import {motion}  from "framer-motion"
+import { useRef, useState } from "react"
 
 
 /* --------------------------------------------- CSS -------------------------------------------- */
@@ -79,7 +80,7 @@ const Stick = styled.div`
     /* transform: scaley(2); */
 `
 
-const Sun = styled.img`
+const Sun = styled(motion.img)`
     position: absolute;
     background-color: #0A2E36;
     padding: 11px;
@@ -97,39 +98,59 @@ const contactLink = "/contact"
 /* ------------------------------------------ COMPONENT ----------------------------------------- */
 export default function Footer() {
 
+    const [stickSelected, setStickSelect] = useState(0)
+    const [positionIcon, setPositionIcon] = useState()
+    const stickRef = useRef<(HTMLDivElement|null)[]>([])
+
     const arr = Array.from({ length: 24 }, (_, index) => index);
 
-  return (
-    <FooterSc>
-        <div className="informations">
-            <div className="divFooterEsq">
-                © 2025 Leandro Torres • Colophon
-            </div>
-            <div className="divFooterDir">
-                <div className="footerLinks">
-                    <p>Elsewhere</p>
-                    <p><a href={githubLink}>GitHub</a></p>
-                    <p><a href={linkedinLink}>Linkedin</a></p>
-                    <p><a href={cvLink}>CV</a></p>
-                </div>
-                <div className="footerContact">
-                    <p>Contact</p>
-                    <p><Link to={contactLink} >Contact</Link></p>
-                </div>
-            </div>
-        </div>
-        <div className="themePicker"> 
-            <Sun
-                src={sun}
-            />
 
+    function getStickPosition(){
+        // let currentStick = stickRef.current.find(stick => (
+        //     stick?.getAttribute("data-key") == "0"
+        // ))
 
-            {arr.map(item => (
-                <Stick 
-                    key={item}
+        let currerrentStick = stickRef.current[stickSelected]
+    }
+
+    function teste (){
+        console.log(stickRef)
+    }
+
+    return (
+        <FooterSc>
+            <div className="informations">
+                <div className="divFooterEsq">
+                    © 2025 Leandro Torres • Colophon
+                </div>
+                <div className="divFooterDir">
+                    <div className="footerLinks">
+                        <p>Elsewhere</p>
+                        <p><a href={githubLink}>GitHub</a></p>
+                        <p><a href={linkedinLink}>Linkedin</a></p>
+                        <p><a href={cvLink}>CV</a></p>
+                    </div>
+                    <div className="footerContact">
+                        <p>Contact</p>
+                        <p><Link to={contactLink} >Contact</Link></p>
+                    </div>
+                </div>
+            </div>
+            <div className="themePicker" onClick={teste}> 
+                <Sun
+                    initial={{ left: 0, top: 0}}
+                    src={sun}
                 />
-            ))}
-        </div>  
-    </FooterSc>
-  )
+
+
+                {arr.map(item => (
+                    <Stick 
+                        key={item}
+                        data-key={item}
+                        ref= {(element) => (stickRef.current[item] = element)}
+                    />
+                ))}
+            </div>  
+        </FooterSc>
+    )
 }
