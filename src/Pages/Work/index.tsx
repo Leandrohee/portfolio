@@ -13,12 +13,12 @@ const WorkSc = styled.div`
     /* background-color: #fff; */
     padding: 10px;
     text-align: center;
-    width: 60%;
+    width: 70%;
     margin: 20vh auto;
 
     h1{
       color: #2C3930;
-      font-family: var(--font-ele5);
+      font-family: ${({theme})=>(theme.fonts.ele5)};
       font-size: 85px;
     }
 

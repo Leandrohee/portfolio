@@ -1,3 +1,6 @@
+/* ----- IM NOT USING THIS FILE ISTEAD IM USING GLOBALSTYLE AND THEME FROM STYLED COMPONENT ----- */
+/* -------------------------------- SETTINGS IN THE FOLDER STYLE -------------------------------- */
+
 /* --------------------------------------- IMPORTING FONTS -------------------------------------- */
 /* Minimalist and Modern Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
@@ -52,6 +55,7 @@ html, body, #root{
   background-size: 150% 150%;
   animation: bg 10s ease infinite;
 }
+
 
 @keyframes bg {
   0%{background-position: 0% 50%}

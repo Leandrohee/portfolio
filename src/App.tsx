@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import Rotas from "./Routes";
+import { GlobalStyle } from "./style/GlobalStyle";
+import { useThemeContext } from "./context/themeToogle";
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 const AppSc = styled.div`
@@ -11,10 +13,15 @@ const AppSc = styled.div`
 
 /* --------------------------------------- MAIN COMPONENT --------------------------------------- */
 function App() {
+  const themeProvider = useThemeContext()
+
   return (
-    <AppSc id="app">
-      <Rotas/>
-    </AppSc>
+    <ThemeProvider theme={themeProvider.theme}>
+      <GlobalStyle/>
+        <AppSc id="app">
+          <Rotas/>
+        </AppSc>
+    </ThemeProvider>
 
   )
 }

@@ -4,7 +4,7 @@ import sun from "../../assets/sunWhite.png"
 import moon from "../../assets/moonWhite.png"
 import {motion}  from "framer-motion"
 import { useEffect, useRef, useState } from "react"
-
+import { useThemeContext } from "../../context/themeToogle"
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 export const FooterSc = styled.footer`
@@ -76,7 +76,7 @@ export const FooterSc = styled.footer`
     }
 `
 
-const Stick = styled.div<StickProps>`
+export const Stick = styled.div<StickProps>`
     width: 100%;
     height: 60px;
     /* background-color: #ffffff48; */
@@ -117,7 +117,7 @@ const Stick = styled.div<StickProps>`
 
 `
 
-const Sun = styled(motion.img)`
+export const Sun = styled(motion.img)`
     position: relative;
     background-color: #0A2E36;
     padding: 11px;
@@ -146,6 +146,7 @@ export default function Footer() {
     const [positionIcon, setPositionIcon] = useState<(number)[]>([])
     const stickRef = useRef<(HTMLDivElement|null)[]>([])
     const themeDiv = useRef<(HTMLDivElement|null)[]>([])
+    const themeCon = useThemeContext()
 
     //Cada elemento dessa array representa 1 hora do dia
     const arr = Array.from({ length: 24 }, (_, index) => index);
@@ -153,7 +154,17 @@ export default function Footer() {
     //Carregando a posicao ao entrar na pagina
     useEffect(()=>{
         getStickPosition()
-    },[])
+    },[stickRef.current[12]])
+
+    //Changing the theme
+    useEffect(()=>{
+        if(stickSelected >= 6 && stickSelected <=  18){
+            themeCon.setThemeLight()
+        }
+        else{
+            themeCon.setThemeDark()
+        }
+    },[stickSelected])
 
     //Mudando a posicao do stick
     function getStickPosition(element?: HTMLDivElement){
@@ -177,10 +188,15 @@ export default function Footer() {
         setStickSelect(Number(target.dataset.key) ?? 0)
         getStickPosition(target)
     }
+    
+
+    const teste =()=>{
+        console.log(stickRef.current[12]?.offsetLeft)
+    }
 
     return (
         <FooterSc>
-            <div className="informations">
+            <div className="informations" onClick={teste}>
                 <div className="divFooterEsq">
                     © 2025 Leandro Torres • Colophon
                 </div>
@@ -202,12 +218,8 @@ export default function Footer() {
                 ref={(element)=> (themeDiv.current[0] = element)} >                     {/*Descrobrindo a distancia da div pai dos sticks  */}
                 { positionIcon[0] &&
                     <Sun
-                        initial={{ 
-                            left: positionIcon[0] - positionIcon[3] - 30,               //Esse 30 é +- a width da imagem sun ou moon
-                            top: -50
-                        }}
                         animate={{ 
-                            left: positionIcon[0] - positionIcon[3] - 30, 
+                            left: positionIcon[0] - positionIcon[3] - 34, 
                             top: -50,
                             opacity: [0,0,1],
                             transition:{
