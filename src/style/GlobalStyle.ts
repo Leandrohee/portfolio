@@ -1,4 +1,5 @@
 import {createGlobalStyle}  from 'styled-components'
+import { lightTheme } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
 /* --------------------------------------- IMPORTING FONTS -------------------------------------- */
@@ -38,6 +39,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${({theme})=> theme.fonts.min1};
         font-weight: 200;
         font-size: 16px;
+        color: ${({theme})=> theme.colors.primary}
     }
 
     html, body, #root {
@@ -49,7 +51,6 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
-
 
     @keyframes bg {
         0%{background-position: 0% 50%}

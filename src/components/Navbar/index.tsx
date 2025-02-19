@@ -2,6 +2,7 @@
 import styled from "styled-components"
 import Links from "../Links"
 import { useEffect, useState } from "react"
+import { lightTheme } from "../../style/theme"
 
 
 const NavbarSc = styled.nav<NavBarScProps>`
@@ -12,10 +13,13 @@ const NavbarSc = styled.nav<NavBarScProps>`
     height: 6vh;                              //config related to size of the navbar
     border-radius: 25px;                      //config related to size of the navbar
     display: flex;
-    background-color: ${({$scroolPosition})=>(
-      $scroolPosition > 50 && $scroolPosition < 200 ? "#81adcc31" :
-      $scroolPosition > 200 ? "#81adcc" :
-       "transparent"
+    background-color: ${({$scroolPosition, theme})=>(
+      $scroolPosition < 50 ? "transparent" :
+      $scroolPosition > 50 && $scroolPosition < 200 
+        ? theme === lightTheme ? "#81adcc54" :  "#29323f" :
+      $scroolPosition > 200 
+        ? theme === lightTheme ? "#81adcc" :  "#29323f"
+        : ""
     )};
     z-index: 1;
 `

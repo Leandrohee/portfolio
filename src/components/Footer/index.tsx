@@ -57,7 +57,7 @@ export const FooterSc = styled.footer`
             a{
                 font-size: 18px;
                 text-decoration: none;
-                color: black;
+                color: ${({theme})=>theme.colors.primary};
             }
         }
     }
@@ -79,7 +79,6 @@ export const FooterSc = styled.footer`
 export const Stick = styled.div<StickProps>`
     width: 100%;
     height: 60px;
-    /* background-color: #ffffff48; */
     display: flex;
     justify-content: start;
     align-items: end;

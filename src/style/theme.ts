@@ -23,19 +23,21 @@ const fonts =  {
 
 export const lightTheme = {
     colors: {
-        primary: "#2973B2",
-        secondary: "#48A6A7",
-        tertiary: "#9ACBD0"
+        primary: "black",
+        secondary: "#2C3930",
+        tertiary: "#213555",
+        tunnel: "#2E5077"
     },
-    bg: "linear-gradient(to left bottom, #2973B2, #48A6A7, #9ACBD0)",
+    bg: "linear-gradient(to left bottom, #F2EFE7, #9ACBD0, #48A6A7)",
     fonts: fonts
 }
 
 export const darkTheme = {
     colors: {
-        primary: "#2973B2",
-        secondary: "#48A6A7",
-        tertiary: "#9ACBD0"
+        primary: "#E4E0E1",
+        secondary: "#C5D3E8",
+        tertiary: "#B6C4B6",
+        tunnel: "#DCD7C9"
     },
     bg: "linear-gradient(200deg, #000000, #282A3A,rgb(39, 31, 15))",
     fonts: fonts

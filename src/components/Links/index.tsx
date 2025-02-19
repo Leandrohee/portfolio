@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import {motion}  from "framer-motion"
 import { useEffect, useRef, useState } from "react"
+import { lightTheme } from "../../style/theme"
 
 /* --------------------------------------------- CSS -------------------------------------------- */
 const LinksSc = styled.div`
@@ -14,12 +15,16 @@ const LinksSc = styled.div`
     
     .link{
         text-decoration: none;
-        color: black;
+        color: ${({theme})=>theme.colors.secondary};
         font-weight: 300;
         min-width: 100px;
         padding: 8px;
         border-radius: 30px;
         text-align: center;
+    }
+
+    .link.isSelected{
+        color: ${({theme})=> theme == lightTheme ? "black" : "black"}
     }
 `
 
@@ -27,10 +32,13 @@ const BgLinkSc = styled(motion.div)`
     position: fixed;                        //Fixed is related to the body, while absolute is related to the parent
     width: 100px;
     height: 40px;
-    background-color: #a5cdea;
+    background-color: ${({theme})=>(
+        theme === lightTheme ? "#a5cdea" : theme.colors.tunnel
+    )};
     border-radius: 30px;
     z-index: -1;                            //Make it lower then the other
 `
+
 
 /* ------------------------------------------ COMPONENT ----------------------------------------- */
 export default function Links() {
@@ -94,7 +102,6 @@ export default function Links() {
             })
         }
 
-
     return (
     <LinksSc >
         { position.left !== 0 &&                                                                        //Only render with the position is defined
@@ -108,9 +115,11 @@ export default function Links() {
             />
         }
         {links.map((link, index) => (
-                <Link 
+                <Link
                     key={index}
-                    className="link"
+                    className={`link ${
+                        location.pathname === link.link ? "isSelected" : ""
+                    }`}
                     to={link.link}
                     onClick={handleClick}
                     ref={(element)=> (linksRef.current[index] = element)}                               //Getting the html of every Link

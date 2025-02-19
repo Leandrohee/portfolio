@@ -10,14 +10,13 @@ const WorkSc = styled.div`
   padding: 50px 30px;
 
   .hi{
-    /* background-color: #fff; */
     padding: 10px;
     text-align: center;
     width: 70%;
     margin: 20vh auto;
 
     h1{
-      color: #2C3930;
+      color: ${({theme})=> theme.colors.tertiary};
       font-family: ${({theme})=>(theme.fonts.ele5)};
       font-size: 85px;
     }
@@ -45,7 +44,7 @@ const WorkSc = styled.div`
 const WorkBoxSc = styled(motion.div)<WorkBoxScProps>`
   height: 80vh;
   width: ${({$width})=>($width ? $width : "30%")};
-  border-radius: 30px;
+  border-radius: 50px;
   background-color: ${({$bgc})=>($bgc ? $bgc : "#fff")};
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
